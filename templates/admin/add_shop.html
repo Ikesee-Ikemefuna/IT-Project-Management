@@ -1,0 +1,28 @@
+<!-- templates/admin/add_shop.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Add Shop</title>
+</head>
+<body>
+    <h1>Add Shop</h1>
+
+    <form method="POST" action="{{ url_for('admin_add_shop') }}">
+        <label for="shop_name">Shop Name:</label>
+        <input type="text" name="shop_name" required>
+
+        <label for="shop_image_url">Shop Image URL:</label>
+        <input type="text" name="shop_image_url" required>
+
+        <label for="shop_location">Shop Location:</label>
+        <input type="text" name="shop_location" required>
+
+        <button type="submit">Add Shop</button>
+    </form>
+
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

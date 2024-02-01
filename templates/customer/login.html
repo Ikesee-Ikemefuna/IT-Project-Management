@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            color: black;
+            text-align: center; /* Center-align content */
+            margin: 50px; /* Add space from the edges */
+        }
+
+        /* Add your custom styles here */
+
+    </style>
+    <title>Customer Login</title>
+</head>
+<body>
+    <h1>Customer Login</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('customer_login') }}">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p>Don't have an account? <a href="{{ url_for('customer_register') }}">Register here</a>.</p>
+
+    <!-- Buttons for Admin and Manager login -->
+    <div>
+        <a href="{{ url_for('admin_login') }}"><button>Admin Login</button></a>
+        <a href="{{ url_for('inventory_manager_login') }}"><button>Manager Login</button></a>
+    </div>
+</body>
+</html>

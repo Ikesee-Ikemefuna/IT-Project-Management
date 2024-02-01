@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Add any additional styles as needed */
+    </style>
+    <title>Edit Shop</title>
+</head>
+<body>
+    <h1>Edit Shop</h1>
+
+    <form method="post" action="{{ url_for('admin_edit_shop', shop_id=shop.0) }}">
+        <label for="shop_name">Shop Name:</label>
+        <input type="text" id="shop_name" name="shop_name" value="{{ shop.1 }}" required>
+        
+        <label for="shop_image_url">Shop Image URL:</label>
+        <input type="text" id="shop_image_url" name="shop_image_url" value="{{ shop.2 }}" required>
+        
+        <label for="shop_location">Shop Location:</label>
+        <input type="text" id="shop_location" name="shop_location" value="{{ shop.3 }}" required>
+
+        <button type="submit">Update Shop</button>
+    </form>
+
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

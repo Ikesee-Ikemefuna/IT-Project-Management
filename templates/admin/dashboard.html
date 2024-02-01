@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            color: black;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #b93d3d;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #8a1b1b;
+            color: white;
+        }
+
+        .products-table {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Style for Logout Button */
+        .logout-btn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #8a1b1b;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <!-- Logout Button -->
+    <a href="{{ url_for('admin_logout') }}" class="logout-btn">Logout</a>
+    <!-- Displaying Shop Data -->
+    <h2>Shops</h2>
+    <table>
+        <thead>
+            <tr>
+                {% for column in shops_columns %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shop in shops_data %}
+                <tr>
+                    {% for value in shop %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                    <td>
+                        <a href="{{ url_for('admin_edit_shop', shop_id=shop.0) }}">
+                            <button>Edit</button>
+                        </a>
+                        <form method="post" action="{{ url_for('admin_delete_shop', shop_id=shop.0) }}" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this shop?')">Delete</button>
+                        </form>
+                        <button onclick="toggleProductsTable('products_table_{{ shop.0 }}')">View Products</button>
+                    </td>
+                </tr>
+                <tr class="products-table" id="products_table_{{ shop.0 }}">
+                    <td colspan="{{ shops_columns|length + 1 }}">
+                        <!-- Display Products for the Shop -->
+                        <h3>Products for {{ shop.1 }}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    {% for column in products_columns %}
+                                        <th>{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products_data %}
+                                    {% if product[-1] == shop.0 %}
+                                        <tr>
+                                            {% for value in product %}
+                                                <td>{{ value }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('admin_add_shop') }}">
+        <button>Add Shop</button>
+    </a>
+
+    <script>
+        function toggleProductsTable(tableId) {
+            var table = document.getElementById(tableId);
+            if (table.style.display === 'table') {
+                table.style.display = 'none';
+            } else {
+                table.style.display = 'table';
+            }
+        }
+    </script>
+
+</body>
+</html>

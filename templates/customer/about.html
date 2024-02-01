@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #42f451;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #4285f4;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Logout Button Styles */
+        .logout-btn {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc3545;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); 
+            margin: 50px; 
+        }
+
+        h1, p {
+            margin-bottom: 20px; 
+        }
+    </style>
+    <title>About Us</title>
+</head>
+
+<body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+        <a href="{{ url_for('customer_product_list') }}">Product List</a>
+        <a class="logout-btn" href="{{ url_for('customer_logout') }}">Logout</a>
+    </nav>
+    <div class="container">
+        <h2>Our Story</h2>
+        <p>
+            Welcome to Shop Finder, your go-to platform for discovering amazing products and shops! Our journey
+            began with a passion for connecting customers with the best shopping experiences. We strive to provide a
+            seamless and enjoyable way for you to explore a wide range of products from various shops.
+        </p>
+
+        <h2>Our Mission</h2>
+        <p>
+            Our mission is to make your shopping experience delightful. We are committed to offering a diverse
+            selection of high-quality products from trusted shops. Whether you are a customer, inventory manager, or
+            an admin, we aim to cater to your unique needs and preferences.
+        </p>
+
+        <h2>Meet the Team</h2>
+        <p>
+            We have a dedicated team of professionals who are passionate about creating an exceptional platform for
+            shoppers. From developers to designers, each team member plays a crucial role in shaping the future of
+            Shop Finder.
+        </p>
+    </div>
+
+    <footer>
+        &copy; 2024 Shop Finder. All rights reserved.
+    </footer>
+</body>
+
+</html>

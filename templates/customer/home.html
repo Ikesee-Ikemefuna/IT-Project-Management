@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            color: black;
+            margin: 0; 
+            padding: 0; 
+            background-image: url('./static/images/background.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            font-family: Arial, sans-serif; 
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Logout Button Styles */
+        .logout-btn {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc3545;
+        }
+
+        /* Content Styles */
+        .content {
+            padding: 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
+            margin: 50px; /* Create space from the edges */
+        }
+
+        h1, p {
+            margin-bottom: 20px; /* Add space between heading and paragraph */
+        }
+    </style>
+    <title>Shop Product Finder</title>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About Us</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+        <a href="{{ url_for('customer_product_list') }}">Product List</a>
+        <a class="logout-btn" href="{{ url_for('customer_logout') }}">Logout</a>
+    </nav>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Welcome to Our Shop Product Finder!</h1>
+        <p>Explore a wide range of high-quality products and enjoy a seamless shopping experience. Our dedicated team is committed to providing you with the best service and ensuring your satisfaction.</p>
+
+        <!-- Additional Content -->
+        <p>Discover the latest trends, find exclusive deals, and shop with confidence. Whether you're looking for electronics, fashion, or home essentials, we've got you covered.</p>
+    </div>
+
+</body>
+
+</html>

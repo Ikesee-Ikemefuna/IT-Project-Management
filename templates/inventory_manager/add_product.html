@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Add Product</title>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form method="post" action="{{ url_for('inventory_manager_add_product') }}">
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" required>
+        
+        <label for="product_image_url">Product Image URL:</label>
+        <input type="text" name="product_image_url" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" required>
+
+        <!-- New field for quantity -->
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" required>
+
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="In Stock" selected>In Stock</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select>
+
+        <label for="shop_id">Shop ID:</label>
+        <input type="number" name="shop_id" required>
+
+        <button type="submit">Add Product</button>
+    </form>
+    <a href="{{ url_for('inventory_manager_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

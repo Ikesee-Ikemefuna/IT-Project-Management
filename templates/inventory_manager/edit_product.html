@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Edit Product</title>
+</head>
+<body>
+    <h1>Edit Product</h1>
+    <form method="post" action="{{ url_for('inventory_manager_edit_product', product_id=product[0]) }}">
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" value="{{ product[1] }}" required>
+        
+        <label for="product_image_url">Product Image URL:</label>
+        <input type="text" name="product_image_url" value="{{ product[2] }}" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" value="{{ product[3] }}" required>
+        
+        <!-- Add fields for quantity and status -->
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" value="{{ product[4] }}" required>
+
+        <label for="status">Status:</label>
+        <select name="status">
+            <option value="In Stock" {% if product[5] == 'In Stock' %}selected{% endif %}>In Stock</option>
+            <option value="Out of Stock" {% if product[5] == 'Out of Stock' %}selected{% endif %}>Out of Stock</option>
+        </select>
+        
+        <label for="shop_id">Shop ID:</label>
+        <input type="number" name="shop_id" value="{{ product[6] }}" required>
+
+        <button type="submit">Update Product</button>
+    </form>
+    <a href="{{ url_for('inventory_manager_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
