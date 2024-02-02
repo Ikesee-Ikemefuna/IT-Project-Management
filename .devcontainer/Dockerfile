@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir Flask==2.0.1 Werkzeug==2.0.3 gunicorn==20.1.0 api
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 8000
+EXPOSE 5000
 
 # Command to run the Python application using Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "main:app"]
