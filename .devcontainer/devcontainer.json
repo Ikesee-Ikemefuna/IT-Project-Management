@@ -1,12 +1,25 @@
 {
-  "name": "FlaskApp",
+  "name": "Python Codespace",
   "dockerFile": "Dockerfile",
-  "settings": {
-    "pythonPath": "/usr/local/bin/python3"
+  "context": ".",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+        // Add other extensions if needed
+      ]
+    }
   },
-  "extensions": [
-    "ms-python.python"
-  ],
   "forwardPorts": [5000],
-  "postCreateCommand": "pip3 install -r requirements.txt"
+  "portsAttributes": {
+    "8000": {
+      "label": "Application",
+      "onAutoForward": "openBrowser"
+    }
+  },
+ "postCreateCommand": "apk add --no-cache git && pip install Flask==2.0.1 gunicorn && gunicorn -b 0.0.0.0:8000 main:app"
 }
