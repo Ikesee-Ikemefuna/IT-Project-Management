@@ -1,0 +1,12 @@
+{
+  "name": "FlaskApp",
+  "dockerFile": "Dockerfile",
+  "settings": {
+    "pythonPath": "/usr/local/bin/python3"
+  },
+  "extensions": [
+    "ms-python.python"
+  ],
+  "forwardPorts": [5000],
+  "postCreateCommand": "pip3 install -r requirements.txt"
+}
